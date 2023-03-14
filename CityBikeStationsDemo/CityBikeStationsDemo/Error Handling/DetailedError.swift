@@ -7,7 +7,6 @@
 
 import Foundation
 
-// TODO: may remove isSilent and location to simplify for a current small demo
 struct DetailedError: Error {
   let source: Source
   /// The status code of the error
@@ -20,8 +19,6 @@ struct DetailedError: Error {
   let isSilent: Bool
   /// The underlying error that caused this error
   let cause: Error?
-  /// Error location in code, for internal logging
-  let location: String
 
   init(
     source: DetailedError.Source = .unknown,
@@ -29,10 +26,7 @@ struct DetailedError: Error {
     title: String = Strings.Error.API.title,
     message: String,
     isSilent: Bool = false,
-    cause: Error? = nil,
-    file: String = #file,
-    function: String = #function,
-    line: Int = #line
+    cause: Error? = nil
   ) {
     self.source = source
     self.code = code
@@ -40,7 +34,6 @@ struct DetailedError: Error {
     self.message = message + String(format: Strings.Error.API.formattedErrorCode, code)
     self.isSilent = isSilent
     self.cause = cause
-    location = "\(file):\(line), \(function)"
   }
 
   static let unknown = DetailedError(

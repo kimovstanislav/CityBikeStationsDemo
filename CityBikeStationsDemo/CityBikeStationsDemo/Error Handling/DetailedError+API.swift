@@ -13,20 +13,14 @@ extension DetailedError {
     apiError: Error?,
     code: Int,
     title: String,
-    message: String,
-    file: String = #file,
-    function: String = #function,
-    line: Int = #line
+    message: String
   ) {
     self.init(
       source: .api,
       code: code,
       message: message,
       isSilent: false,
-      cause: apiError,
-      file: file,
-      function: function,
-      line: line
+      cause: apiError
     )
   }
 }

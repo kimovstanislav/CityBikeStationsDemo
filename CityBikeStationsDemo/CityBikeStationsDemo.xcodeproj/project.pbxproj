@@ -17,8 +17,12 @@
 		28D5FCF929C0AEF200031775 /* DetailedError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D5FCF829C0AEF200031775 /* DetailedError.swift */; };
 		28D5FCFC29C0AF2800031775 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D5FCFB29C0AF2800031775 /* Strings.swift */; };
 		28D5FD0329C0B2DE00031775 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D5FD0229C0B2DE00031775 /* API.swift */; };
-		28D5FD0629C0BA4600031775 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D5FD0529C0BA4600031775 /* Network.swift */; };
+		28D5FD0629C0BA4600031775 /* StationsNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D5FD0529C0BA4600031775 /* StationsNetwork.swift */; };
 		28D5FD0829C0BFAE00031775 /* DetailedError+API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D5FD0729C0BFAE00031775 /* DetailedError+API.swift */; };
+		28D5FD0B29C0E19D00031775 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D5FD0A29C0E19D00031775 /* APIClient.swift */; };
+		28D5FD0D29C0E1CE00031775 /* APIClient+ErrorMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D5FD0C29C0E1CE00031775 /* APIClient+ErrorMapping.swift */; };
+		28D5FD1029C0E21600031775 /* HTTPStatusCodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D5FD0F29C0E21600031775 /* HTTPStatusCodes.swift */; };
+		28D5FD1229C0E6AA00031775 /* UnexpectedCodePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D5FD1129C0E6AA00031775 /* UnexpectedCodePath.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,8 +57,12 @@
 		28D5FCF829C0AEF200031775 /* DetailedError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedError.swift; sourceTree = "<group>"; };
 		28D5FCFB29C0AF2800031775 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		28D5FD0229C0B2DE00031775 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
-		28D5FD0529C0BA4600031775 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		28D5FD0529C0BA4600031775 /* StationsNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationsNetwork.swift; sourceTree = "<group>"; };
 		28D5FD0729C0BFAE00031775 /* DetailedError+API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DetailedError+API.swift"; sourceTree = "<group>"; };
+		28D5FD0A29C0E19D00031775 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		28D5FD0C29C0E1CE00031775 /* APIClient+ErrorMapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIClient+ErrorMapping.swift"; sourceTree = "<group>"; };
+		28D5FD0F29C0E21600031775 /* HTTPStatusCodes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPStatusCodes.swift; sourceTree = "<group>"; };
+		28D5FD1129C0E6AA00031775 /* UnexpectedCodePath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnexpectedCodePath.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +113,7 @@
 		28D5FCCB29C0915700031775 /* CityBikeStationsDemo */ = {
 			isa = PBXGroup;
 			children = (
+				28D5FD0E29C0E20800031775 /* Definitions */,
 				28D5FCFD29C0B2AF00031775 /* Data Layer */,
 				28D5FCFA29C0AF1A00031775 /* Utility */,
 				28D5FCF729C0AED200031775 /* Error Handling */,
@@ -155,6 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				28D5FCFB29C0AF2800031775 /* Strings.swift */,
+				28D5FD1129C0E6AA00031775 /* UnexpectedCodePath.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -189,6 +199,8 @@
 		28D5FD0029C0B2C800031775 /* APIClient */ = {
 			isa = PBXGroup;
 			children = (
+				28D5FD0A29C0E19D00031775 /* APIClient.swift */,
+				28D5FD0C29C0E1CE00031775 /* APIClient+ErrorMapping.swift */,
 			);
 			path = APIClient;
 			sourceTree = "<group>";
@@ -203,9 +215,17 @@
 		28D5FD0429C0B2EE00031775 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				28D5FD0529C0BA4600031775 /* Network.swift */,
+				28D5FD0529C0BA4600031775 /* StationsNetwork.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		28D5FD0E29C0E20800031775 /* Definitions */ = {
+			isa = PBXGroup;
+			children = (
+				28D5FD0F29C0E21600031775 /* HTTPStatusCodes.swift */,
+			);
+			path = Definitions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -338,11 +358,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28D5FD1029C0E21600031775 /* HTTPStatusCodes.swift in Sources */,
 				28D5FCCF29C0915700031775 /* ContentView.swift in Sources */,
 				28D5FCCD29C0915700031775 /* CityBikeStationsDemoApp.swift in Sources */,
 				28D5FCFC29C0AF2800031775 /* Strings.swift in Sources */,
+				28D5FD0B29C0E19D00031775 /* APIClient.swift in Sources */,
 				28D5FCF929C0AEF200031775 /* DetailedError.swift in Sources */,
-				28D5FD0629C0BA4600031775 /* Network.swift in Sources */,
+				28D5FD0629C0BA4600031775 /* StationsNetwork.swift in Sources */,
+				28D5FD0D29C0E1CE00031775 /* APIClient+ErrorMapping.swift in Sources */,
+				28D5FD1229C0E6AA00031775 /* UnexpectedCodePath.swift in Sources */,
 				28D5FD0329C0B2DE00031775 /* API.swift in Sources */,
 				28D5FD0829C0BFAE00031775 /* DetailedError+API.swift in Sources */,
 			);

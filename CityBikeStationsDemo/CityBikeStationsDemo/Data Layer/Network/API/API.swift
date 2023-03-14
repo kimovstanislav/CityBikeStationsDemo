@@ -8,19 +8,18 @@
 import Foundation
 
 protocol API {
-    /// Throws DetailedError
-    func loadNetwork() async throws -> [Network]
+  /// Throws DetailedError
+  func loadViennaNetwork() async throws -> Network
 }
 
 extension API {
-    func decodeApiResponse<T: Decodable>(data: Data) throws -> T {
-        do {
-            let object: T = try JSONDecoder().decode(T.self, from: data)
-            return object
-        }
-        catch let error {
-            let detailedError: DetailedError = DetailedError.Factory.makeDecodingError(cause: error)
-            throw detailedError
-        }
+  func decodeApiResponse<ResponseType: Decodable>(data: Data) throws -> ResponseType {
+    do {
+      let object = try JSONDecoder().decode(ResponseType.self, from: data)
+      return object
+    } catch let error {
+      let detailedError: DetailedError = DetailedError.Factory.makeDecodingError(cause: error)
+      throw detailedError
     }
+  }
 }
