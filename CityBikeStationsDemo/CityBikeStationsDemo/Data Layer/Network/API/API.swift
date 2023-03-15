@@ -8,10 +8,10 @@
 import Foundation
 
 protocol API {
-  /// Throws DetailedError
   func loadViennaNetwork() async throws -> Network
 }
 
+// MARK: - Decode response
 extension API {
   func decodeApiResponse<ResponseType: Decodable>(data: Data) throws -> ResponseType {
     do {

@@ -22,7 +22,6 @@ class BaseViewModel: ObservableObject {
   
   @MainActor func showAlert(title: String, message: String) {
     alertModel.show(title: title, message: message)
-//    self.objectWillChange.send()
   }
   
   func processError(_ error: DetailedError) {

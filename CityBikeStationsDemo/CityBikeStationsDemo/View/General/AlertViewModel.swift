@@ -7,7 +7,6 @@
 
 import Foundation
 
-// TODO: make sure UI update is on main thread
 class AlertViewModel: ObservableObject {
   @Published @MainActor var showAlert = false {
     willSet {
@@ -24,11 +23,6 @@ class AlertViewModel: ObservableObject {
     self.title = title
     self.message = message
     showAlert = true
-  }
-
-  @MainActor func hide() {
-    showAlert = false
-    clear()
   }
   
   private func clear() {

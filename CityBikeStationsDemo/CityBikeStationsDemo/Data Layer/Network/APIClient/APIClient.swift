@@ -7,13 +7,11 @@
 
 import Foundation
 
-// TODO: try on ViewModel @MainActor, or just update ViewState from MainActor. Output which are things run on the main thread in different places and approaches.
-// TODO: figure out if we need an actor and use it correct, also cancelling the request, maybe?
+/// Throws DetailedError
 actor APIClient: API {
   let session = URLSession.shared
 
   enum URLs {
-//    static let host = "https://api.citybik.es"
     static let host = "api.citybik.es"
     static let apiVersion = "/v2"
 
@@ -28,19 +26,9 @@ actor APIClient: API {
     components.host = host
     components.path = apiVersion + endpoint
     guard let url = components.url else {
-      unexpectedCodePath(message: "Invalid URL.")
+      unexpectedCodePath(message: "APIClient - invalid URL.")
     }
     return url
-  }
-  
-  func loadViennaNetwork() async throws -> Network {
-    let url = makeUrl(
-      host: URLs.host,
-      apiVersion: URLs.apiVersion,
-      endpoint: URLs.Endpoints.viennaNetwork)
-    print("> url", url)
-    let response: NetworkResponse = try await performRequest(url: url)
-    return response.network
   }
 }
 
@@ -60,5 +48,17 @@ extension APIClient {
       let detailedError = APIClient.ErrorMapper.convertToDetailedError(error)
       throw detailedError
     }
+  }
+}
+
+// MARK: - API requests
+extension APIClient {
+  func loadViennaNetwork() async throws -> Network {
+    let url = makeUrl(
+      host: URLs.host,
+      apiVersion: URLs.apiVersion,
+      endpoint: URLs.Endpoints.viennaNetwork)
+    let response: NetworkResponse = try await performRequest(url: url)
+    return response.network
   }
 }

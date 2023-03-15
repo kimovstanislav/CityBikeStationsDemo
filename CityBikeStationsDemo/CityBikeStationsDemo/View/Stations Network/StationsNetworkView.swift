@@ -27,8 +27,8 @@ struct StationsNetworkView: View {
           emptyListView()
         }
 
-//      case .showError(let errorMessage):
-//        errorView(errorMessage: errorMessage)
+      case .showError(let errorMessage):
+        errorView(errorMessage: errorMessage)
       }
     }
     .task {
@@ -44,7 +44,7 @@ struct StationsNetworkView: View {
   
   // MARK: - Placeholder
   private func placeholderView() -> some View {
-    EmptyView()
+    Text("Hello")
   }
   
   // MARK: - Loading
@@ -68,16 +68,19 @@ struct StationsNetworkView: View {
   }
   
   // MARK: - Error
-//  private func errorView(errorMessage: String) -> some View {
-//    VStack(alignment: .center) {
-//      Spacer()
-//      Text(errorMessage)
-//        .font(.headline.bold())
-//        .multilineTextAlignment(.center)
-//      Spacer()
-//    }
-//    .padding()
-//  }
+  private func errorView(errorMessage: String) -> some View {
+    VStack(alignment: .center) {
+      Spacer()
+      Text(errorMessage)
+        .font(.headline.bold())
+        .multilineTextAlignment(.center)
+      Button(Strings.Button.retry) {
+        viewModel.loadNetworkStations()
+      }
+      Spacer()
+    }
+    .padding()
+  }
 }
 
 struct StationsNetworkView_Previews: PreviewProvider {

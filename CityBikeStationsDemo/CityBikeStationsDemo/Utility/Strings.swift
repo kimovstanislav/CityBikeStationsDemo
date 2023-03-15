@@ -27,6 +27,7 @@ enum Strings {
     
   enum Button {
     static let close = "Close"
+    static let retry = "Retry"
   }
   
   enum Screen {

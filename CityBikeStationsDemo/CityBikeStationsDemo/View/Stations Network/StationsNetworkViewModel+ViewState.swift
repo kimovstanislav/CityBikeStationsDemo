@@ -12,6 +12,6 @@ extension StationsNetworkViewModel {
     case idle
     case loading
     case showNetwork(network: Network)
-//    case showError(errorMessage: String)
+    case showError(errorMessage: String)
   }
 }

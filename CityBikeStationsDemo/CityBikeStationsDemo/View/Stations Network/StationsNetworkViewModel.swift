@@ -15,13 +15,16 @@ class StationsNetworkViewModel: BaseViewModel {
   
   private var network: Network? = nil
   private var location: CLLocation? = nil
-//  private var error: DetailedError? = nil
+  private var error: DetailedError? = nil
   
   init(apiClient: API) {
       self.apiClient = apiClient
       super.init()
   }
-  
+}
+
+// MARK: - Manage view state
+extension StationsNetworkViewModel {
   @MainActor private func setViewState(_ state: ViewState) {
     self.viewState = state
   }
@@ -34,11 +37,10 @@ class StationsNetworkViewModel: BaseViewModel {
   
   private func updateViewState() {
     Task {
-//      if let error = error {
-//        await setViewState(.showError(errorMessage: error.message))
-//      }
-      if let network = network {
-//        await self.processError(.unknown)
+      if let error = error {
+        await setViewState(.showError(errorMessage: error.message))
+      }
+      else if let network = network {
         await setViewState(.showNetwork(network: network))
       }
       else {
@@ -51,6 +53,7 @@ class StationsNetworkViewModel: BaseViewModel {
 // MARK: - Load from server
 extension StationsNetworkViewModel {
     func loadNetworkStations() {
+      clearError()
       startLoading()
       Task { [weak self] in
         guard let self else { return }
@@ -63,12 +66,15 @@ extension StationsNetworkViewModel {
           }
       }
     }
+  
+  private func clearError() {
+    error = nil
+  }
 }
 
 // MARK: - Handle API response
 extension StationsNetworkViewModel {
     private func handleGetNetworkSuccess(_ result: Network) {
-//      error = nil
       network = result
       // TODO: perform the actual sorting and then pass sorted to the view
 //      let sortedStations = sortStations(result.stations)
@@ -77,8 +83,8 @@ extension StationsNetworkViewModel {
     
     private func handleGetNetworkFailure(_ apiError: DetailedError) {
       network = nil
+      error = apiError
       updateViewState()
-//      error = apiError
       processError(apiError)
     }
 }
