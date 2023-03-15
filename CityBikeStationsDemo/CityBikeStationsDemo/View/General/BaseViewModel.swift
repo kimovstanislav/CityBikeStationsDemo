@@ -6,23 +6,24 @@
 //
 
 import Foundation
+import Combine
 
 class BaseViewModel: ObservableObject {
-  @Published @MainActor var alertModel: AlertViewModel = AlertViewModel()
-//  {
-//    willSet {
-//      self.objectWillChange.send()
-//    }
-//  }
+  @Published var alertModel: AlertViewModel = AlertViewModel()
+  private var bag: Set<AnyCancellable> = []
+  
+  init() {
+    alertModel.objectWillChange
+      .sink { _ in
+        self.objectWillChange.send()
+      }
+      .store(in: &bag)
+  }
   
   @MainActor func showAlert(title: String, message: String) {
     alertModel.show(title: title, message: message)
-    self.objectWillChange.send()
+//    self.objectWillChange.send()
   }
-
-//  @MainActor func hideAlert() {
-//    alertModel.hide()
-//  }
   
   func processError(_ error: DetailedError) {
     ErrorLogger.logError(error)
