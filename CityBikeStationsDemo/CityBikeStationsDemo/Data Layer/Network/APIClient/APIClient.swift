@@ -7,11 +7,14 @@
 
 import Foundation
 
-class APIClient: API {
+// TODO: try on ViewModel @MainActor, or just update ViewState from MainActor. Output which are things run on the main thread in different places and approaches.
+// TODO: figure out if we need an actor and use it correct, also cancelling the request, maybe?
+actor APIClient: API {
   let session = URLSession.shared
 
   enum URLs {
-    static let host = "https://api.citybik.es"
+//    static let host = "https://api.citybik.es"
+    static let host = "api.citybik.es"
     static let apiVersion = "/v2"
 
     enum Endpoints {
@@ -35,11 +38,13 @@ class APIClient: API {
       host: URLs.host,
       apiVersion: URLs.apiVersion,
       endpoint: URLs.Endpoints.viennaNetwork)
+    print("> url", url)
     let response: NetworkResponse = try await performRequest(url: url)
     return response.network
   }
 }
 
+// MARK: - Perform request and decode data
 extension APIClient {
   private func performRequest<ResponseType: Decodable>(url: URL) async throws -> ResponseType {
     let data: Data = try await getDataFromApi(url: url)

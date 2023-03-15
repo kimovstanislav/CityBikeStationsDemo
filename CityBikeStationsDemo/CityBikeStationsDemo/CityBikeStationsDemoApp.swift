@@ -11,7 +11,7 @@ import SwiftUI
 struct CityBikeStationsDemoApp: App {
   var body: some Scene {
     WindowGroup {
-      ContentView()
+      StationsNetworkView(viewModel: ViewModelFactory.shared.makeStationsNetworkViewModel())
     }
   }
 }

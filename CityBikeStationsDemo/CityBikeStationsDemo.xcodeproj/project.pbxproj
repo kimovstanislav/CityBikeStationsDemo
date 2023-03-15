@@ -23,6 +23,17 @@
 		28D5FD0D29C0E1CE00031775 /* APIClient+ErrorMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D5FD0C29C0E1CE00031775 /* APIClient+ErrorMapping.swift */; };
 		28D5FD1029C0E21600031775 /* HTTPStatusCodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D5FD0F29C0E21600031775 /* HTTPStatusCodes.swift */; };
 		28D5FD1229C0E6AA00031775 /* UnexpectedCodePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D5FD1129C0E6AA00031775 /* UnexpectedCodePath.swift */; };
+		28D5FD1429C0FE9500031775 /* JsonHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D5FD1329C0FE9500031775 /* JsonHelper.swift */; };
+		28D5FD1629C0FEE600031775 /* MockAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D5FD1529C0FEE600031775 /* MockAPIClient.swift */; };
+		28D5FD1929C1000300031775 /* vienna_stations_network.json in Resources */ = {isa = PBXBuildFile; fileRef = 28D5FD1829C1000300031775 /* vienna_stations_network.json */; };
+		28D5FD1F29C1DF5700031775 /* StationsNetworkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D5FD1E29C1DF5700031775 /* StationsNetworkView.swift */; };
+		28D5FD2129C1DF6200031775 /* StationsNetworkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D5FD2029C1DF6200031775 /* StationsNetworkViewModel.swift */; };
+		28D5FD2329C1DF7900031775 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D5FD2229C1DF7900031775 /* BaseViewModel.swift */; };
+		28D5FD2529C1DF8800031775 /* AlertViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D5FD2429C1DF8800031775 /* AlertViewModel.swift */; };
+		28D5FD2829C1DFC000031775 /* ViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D5FD2729C1DFC000031775 /* ViewModelFactory.swift */; };
+		28D5FD2A29C1E10300031775 /* ErrorLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D5FD2929C1E10300031775 /* ErrorLogger.swift */; };
+		28D5FD2D29C1FB0D00031775 /* StationsNetworkViewModel+ViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D5FD2C29C1FB0D00031775 /* StationsNetworkViewModel+ViewState.swift */; };
+		28D5FD3129C22D6700031775 /* ViewModelFactory+Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D5FD3029C22D6700031775 /* ViewModelFactory+Mock.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +74,17 @@
 		28D5FD0C29C0E1CE00031775 /* APIClient+ErrorMapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIClient+ErrorMapping.swift"; sourceTree = "<group>"; };
 		28D5FD0F29C0E21600031775 /* HTTPStatusCodes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPStatusCodes.swift; sourceTree = "<group>"; };
 		28D5FD1129C0E6AA00031775 /* UnexpectedCodePath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnexpectedCodePath.swift; sourceTree = "<group>"; };
+		28D5FD1329C0FE9500031775 /* JsonHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonHelper.swift; sourceTree = "<group>"; };
+		28D5FD1529C0FEE600031775 /* MockAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAPIClient.swift; sourceTree = "<group>"; };
+		28D5FD1829C1000300031775 /* vienna_stations_network.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = vienna_stations_network.json; sourceTree = "<group>"; };
+		28D5FD1E29C1DF5700031775 /* StationsNetworkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationsNetworkView.swift; sourceTree = "<group>"; };
+		28D5FD2029C1DF6200031775 /* StationsNetworkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationsNetworkViewModel.swift; sourceTree = "<group>"; };
+		28D5FD2229C1DF7900031775 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
+		28D5FD2429C1DF8800031775 /* AlertViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewModel.swift; sourceTree = "<group>"; };
+		28D5FD2729C1DFC000031775 /* ViewModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelFactory.swift; sourceTree = "<group>"; };
+		28D5FD2929C1E10300031775 /* ErrorLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorLogger.swift; sourceTree = "<group>"; };
+		28D5FD2C29C1FB0D00031775 /* StationsNetworkViewModel+ViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StationsNetworkViewModel+ViewState.swift"; sourceTree = "<group>"; };
+		28D5FD3029C22D6700031775 /* ViewModelFactory+Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewModelFactory+Mock.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,15 +135,16 @@
 		28D5FCCB29C0915700031775 /* CityBikeStationsDemo */ = {
 			isa = PBXGroup;
 			children = (
-				28D5FD0E29C0E20800031775 /* Definitions */,
-				28D5FCFD29C0B2AF00031775 /* Data Layer */,
-				28D5FCFA29C0AF1A00031775 /* Utility */,
-				28D5FCF729C0AED200031775 /* Error Handling */,
 				28D5FCCC29C0915700031775 /* CityBikeStationsDemoApp.swift */,
-				28D5FCCE29C0915700031775 /* ContentView.swift */,
 				28D5FCD029C0915A00031775 /* Assets.xcassets */,
 				28D5FCD229C0915A00031775 /* CityBikeStationsDemo.entitlements */,
 				28D5FCD329C0915A00031775 /* Preview Content */,
+				28D5FD1B29C1DED400031775 /* View */,
+				28D5FCFD29C0B2AF00031775 /* Data Layer */,
+				28D5FCF729C0AED200031775 /* Error Handling */,
+				28D5FCFA29C0AF1A00031775 /* Utility */,
+				28D5FD0E29C0E20800031775 /* Definitions */,
+				28D5FCCE29C0915700031775 /* ContentView.swift */,
 			);
 			path = CityBikeStationsDemo;
 			sourceTree = "<group>";
@@ -165,6 +188,8 @@
 			children = (
 				28D5FCFB29C0AF2800031775 /* Strings.swift */,
 				28D5FD1129C0E6AA00031775 /* UnexpectedCodePath.swift */,
+				28D5FD1329C0FE9500031775 /* JsonHelper.swift */,
+				28D5FD2929C1E10300031775 /* ErrorLogger.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -184,6 +209,7 @@
 				28D5FCFF29C0B2C400031775 /* API */,
 				28D5FD0029C0B2C800031775 /* APIClient */,
 				28D5FD0129C0B2CC00031775 /* MockAPIClient */,
+				28D5FD1729C0FFD700031775 /* Mock Json */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -208,6 +234,7 @@
 		28D5FD0129C0B2CC00031775 /* MockAPIClient */ = {
 			isa = PBXGroup;
 			children = (
+				28D5FD1529C0FEE600031775 /* MockAPIClient.swift */,
 			);
 			path = MockAPIClient;
 			sourceTree = "<group>";
@@ -226,6 +253,52 @@
 				28D5FD0F29C0E21600031775 /* HTTPStatusCodes.swift */,
 			);
 			path = Definitions;
+			sourceTree = "<group>";
+		};
+		28D5FD1729C0FFD700031775 /* Mock Json */ = {
+			isa = PBXGroup;
+			children = (
+				28D5FD1829C1000300031775 /* vienna_stations_network.json */,
+			);
+			path = "Mock Json";
+			sourceTree = "<group>";
+		};
+		28D5FD1B29C1DED400031775 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				28D5FD2B29C1E4EB00031775 /* Factory */,
+				28D5FD1C29C1DED900031775 /* General */,
+				28D5FD1D29C1DEDE00031775 /* Stations Network */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		28D5FD1C29C1DED900031775 /* General */ = {
+			isa = PBXGroup;
+			children = (
+				28D5FD2229C1DF7900031775 /* BaseViewModel.swift */,
+				28D5FD2429C1DF8800031775 /* AlertViewModel.swift */,
+			);
+			path = General;
+			sourceTree = "<group>";
+		};
+		28D5FD1D29C1DEDE00031775 /* Stations Network */ = {
+			isa = PBXGroup;
+			children = (
+				28D5FD2029C1DF6200031775 /* StationsNetworkViewModel.swift */,
+				28D5FD2C29C1FB0D00031775 /* StationsNetworkViewModel+ViewState.swift */,
+				28D5FD1E29C1DF5700031775 /* StationsNetworkView.swift */,
+			);
+			path = "Stations Network";
+			sourceTree = "<group>";
+		};
+		28D5FD2B29C1E4EB00031775 /* Factory */ = {
+			isa = PBXGroup;
+			children = (
+				28D5FD2729C1DFC000031775 /* ViewModelFactory.swift */,
+				28D5FD3029C22D6700031775 /* ViewModelFactory+Mock.swift */,
+			);
+			path = Factory;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -334,6 +407,7 @@
 			files = (
 				28D5FCD529C0915A00031775 /* Preview Assets.xcassets in Resources */,
 				28D5FCD129C0915A00031775 /* Assets.xcassets in Resources */,
+				28D5FD1929C1000300031775 /* vienna_stations_network.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -363,12 +437,22 @@
 				28D5FCCD29C0915700031775 /* CityBikeStationsDemoApp.swift in Sources */,
 				28D5FCFC29C0AF2800031775 /* Strings.swift in Sources */,
 				28D5FD0B29C0E19D00031775 /* APIClient.swift in Sources */,
+				28D5FD2329C1DF7900031775 /* BaseViewModel.swift in Sources */,
 				28D5FCF929C0AEF200031775 /* DetailedError.swift in Sources */,
 				28D5FD0629C0BA4600031775 /* StationsNetwork.swift in Sources */,
 				28D5FD0D29C0E1CE00031775 /* APIClient+ErrorMapping.swift in Sources */,
 				28D5FD1229C0E6AA00031775 /* UnexpectedCodePath.swift in Sources */,
+				28D5FD1429C0FE9500031775 /* JsonHelper.swift in Sources */,
+				28D5FD2529C1DF8800031775 /* AlertViewModel.swift in Sources */,
+				28D5FD2A29C1E10300031775 /* ErrorLogger.swift in Sources */,
+				28D5FD2D29C1FB0D00031775 /* StationsNetworkViewModel+ViewState.swift in Sources */,
 				28D5FD0329C0B2DE00031775 /* API.swift in Sources */,
+				28D5FD1629C0FEE600031775 /* MockAPIClient.swift in Sources */,
+				28D5FD3129C22D6700031775 /* ViewModelFactory+Mock.swift in Sources */,
+				28D5FD1F29C1DF5700031775 /* StationsNetworkView.swift in Sources */,
+				28D5FD2829C1DFC000031775 /* ViewModelFactory.swift in Sources */,
 				28D5FD0829C0BFAE00031775 /* DetailedError+API.swift in Sources */,
+				28D5FD2129C1DF6200031775 /* StationsNetworkViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
