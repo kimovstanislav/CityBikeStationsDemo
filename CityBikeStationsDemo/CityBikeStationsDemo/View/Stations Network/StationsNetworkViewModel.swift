@@ -90,8 +90,6 @@ extension StationsNetworkViewModel {
 extension StationsNetworkViewModel {
     private func handleGetNetworkSuccess(_ result: Network) {
       network = result
-      // TODO: perform the actual sorting and then pass sorted to the view
-//      let sortedStations = sortStations(result.stations)
       updateViewState()
     }
     
@@ -114,5 +112,19 @@ extension StationsNetworkViewModel {
     else {
       return stations.sorted { $0.name < $1.name }
     }
+  }
+}
+
+// MARK: - Map url
+extension StationsNetworkViewModel {
+  func stationMapUrlFor(_ station: Station) -> URL {
+    var components = URLComponents()
+    components.scheme = "https"
+    components.host = "maps.apple.com"
+    components.queryItems = [URLQueryItem(name: "ll", value: "\(station.latitude),\(station.longitude)")]
+    guard let url = components.url else {
+      unexpectedCodePath(message: "Failed to make station map url.")
+    }
+    return url
   }
 }

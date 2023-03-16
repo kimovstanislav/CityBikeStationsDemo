@@ -60,7 +60,10 @@ struct StationsNetworkView: View {
   // MARK: - Stations list
   private func showStationsList(stations: [Station]) -> some View {
     List(stations) { station in
-      listRow(station: station)
+      Link(destination: viewModel.stationMapUrlFor(station)) {
+        listRow(station: station)
+      }
+      .foregroundColor(.black)
     }
     .refreshable {
       viewModel.loadNetworkStations()
