@@ -58,13 +58,23 @@ struct StationsNetworkView: View {
   }
   
   // MARK: - Stations list
-  // TODO: proper cell layout with 3 values
   private func showStationsList(stations: [Station]) -> some View {
-    List(stations.indices, id: \.self) { index in
-      Text(stations[index].name)
+    List(stations) { station in
+      listRow(station: station)
     }
     .refreshable {
       viewModel.loadNetworkStations()
+    }
+  }
+  
+  private func listRow(station: Station) -> some View {
+    VStack(alignment: .leading, spacing: 4) {
+      Text(station.name)
+        .font(Font.title)
+      Text(String(format: Strings.Screen.StationsList.bikesAvailable, station.freeBikes))
+        .font(Font.body)
+      Text(String(format: Strings.Screen.StationsList.emptySlotsAvailable, station.emptySlots ?? 0))
+        .font(Font.body)
     }
   }
   

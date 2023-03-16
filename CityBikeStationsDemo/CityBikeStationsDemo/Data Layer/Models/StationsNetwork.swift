@@ -31,7 +31,7 @@ struct Location: Codable {
 }
 
 // MARK: - Station
-struct Station: Codable {
+struct Station: Codable, Identifiable {
   let id: String
   let name: String
   let emptySlots: Int?

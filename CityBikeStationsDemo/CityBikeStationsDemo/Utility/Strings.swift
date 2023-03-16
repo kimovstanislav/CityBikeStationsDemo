@@ -34,6 +34,8 @@ enum Strings {
     enum StationsList {
       static let title = "Bike Stations"
       static let noStations = "No bike stations found"
+      static let bikesAvailable = "Bikes available: %d"
+      static let emptySlotsAvailable = "Empty slots available: %d"
     }
   }
 }
