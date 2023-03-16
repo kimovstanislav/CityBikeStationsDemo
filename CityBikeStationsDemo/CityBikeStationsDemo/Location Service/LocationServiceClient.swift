@@ -31,24 +31,31 @@ class LocationServiceClient: NSObject, LocationService {
   private func getLocationOnce(completion: @escaping LocationClosure) {
     completionHandler = completion
     locationManager.delegate = self
-    locationManager.requestWhenInUseAuthorization()
+    
+    if !requestLocationOnceIfAllowed() {
+      locationManager.requestWhenInUseAuthorization()
+    }
+  }
+  
+  @discardableResult private func requestLocationOnceIfAllowed() -> Bool {
+    if locationManager.authorizationStatus == .authorizedWhenInUse || locationManager.authorizationStatus == .authorizedAlways {
+      locationManager.requestLocation()
+      return true
+    }
+    return false
   }
 }
 
 // MARK: - CLLocationManagerDelegate
 extension LocationServiceClient: CLLocationManagerDelegate {
   func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-    print("> didChangeAuthorization", status.rawValue)
-    if status == .authorizedWhenInUse || status == .authorizedAlways {
-      locationManager.requestLocation()
-    }
+    requestLocationOnceIfAllowed()
   }
   
   func locationManager(
     _ manager: CLLocationManager,
     didUpdateLocations locations: [CLLocation]
   ) {
-    print("> didUpdateLocations", locations)
     if let location = locations.first {
       completionHandler?(.success(location))
     }
@@ -58,7 +65,6 @@ extension LocationServiceClient: CLLocationManagerDelegate {
     _ manager: CLLocationManager,
     didFailWithError error: Error
   ) {
-    print("> didFailWithError", error)
     completionHandler?(.failure(error))
   }
 }
