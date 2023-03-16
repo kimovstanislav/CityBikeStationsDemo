@@ -14,10 +14,10 @@ class StationsNetworkViewModel: BaseViewModel {
   
   @Published @MainActor private(set) var viewState: ViewState = .idle
   
-  private var network: Network? = nil
+  private var network: Network?
   private var sortedStations: [Station] = []
-  private var location: CLLocation? = nil
-  private var error: DetailedError? = nil
+  private var location: CLLocation?
+  private var error: DetailedError?
   
   init(apiClient: API, locationService: LocationService) {
     self.apiClient = apiClient
@@ -75,7 +75,7 @@ extension StationsNetworkViewModel {
               let response = try await apiClient.loadViennaNetwork()
               self.handleGetNetworkSuccess(response)
           }
-          catch let error as DetailedError  {
+          catch let error as DetailedError {
               self.handleGetNetworkFailure(error)
           }
       }

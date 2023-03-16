@@ -12,7 +12,7 @@ struct StationsNetworkView: View {
   @ObservedObject var viewModel:  StationsNetworkViewModel
     
   var body: some View {
-    NavigationStack {
+    Group {
       switch viewModel.viewState {
       case .idle:
         placeholderView()

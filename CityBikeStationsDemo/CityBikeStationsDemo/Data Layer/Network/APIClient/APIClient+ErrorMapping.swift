@@ -19,8 +19,7 @@ extension APIClient {
 
     private static func parseError(_ error: NSError) -> DetailedError {
       if error.code == URLError.notConnectedToInternet.rawValue
-        || error.code == URLError.cannotConnectToHost.rawValue
-      {
+        || error.code == URLError.cannotConnectToHost.rawValue {
         return DetailedError(
           apiError: error, code: error.code, title: Strings.Error.API.noInternetConnectionTitle,
           message: Strings.Error.API.noInternetConnectionMessage)

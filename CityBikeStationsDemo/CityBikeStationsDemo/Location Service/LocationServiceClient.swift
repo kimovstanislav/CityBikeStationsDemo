@@ -12,7 +12,7 @@ actor LocationServiceClient: NSObject, LocationService {
   private var locationManager = CLLocationManager()
   
   typealias LocationClosure = (Result<CLLocation, Error>) -> Void
-  private var completionHandler: LocationClosure? = nil
+  private var completionHandler: LocationClosure?
   
   override init() {
     super.init()
