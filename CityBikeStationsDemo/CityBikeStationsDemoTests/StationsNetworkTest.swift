@@ -40,7 +40,7 @@ final class StationsNetworkTest: XCTestCase {
         let viewModel = StationsNetworkViewModel(apiClient: apiClient, locationService: locationService)
         viewModel.loadNetworkStations()
         
-        let _ = viewModel.$viewState
+        viewModel.$viewState
           .sink { value in
             let stateToCompare = statesQueue.dequeue()
             guard stateToCompare == value else {
@@ -77,7 +77,7 @@ final class StationsNetworkTest: XCTestCase {
         let viewModel = StationsNetworkViewModel(apiClient: apiClient, locationService: FailingLocationServiceClient())
         viewModel.loadNetworkStations()
         
-        let _ = viewModel.$viewState
+        viewModel.$viewState
           .sink { value in
             let stateToCompare = statesQueue.dequeue()
             guard stateToCompare == value else {
@@ -104,7 +104,7 @@ final class StationsNetworkTest: XCTestCase {
     let viewModel = StationsNetworkViewModel(apiClient: FailingAPIClient(), locationService: MockLocationServiceClient())
     viewModel.loadNetworkStations()
     
-    let _ = viewModel.alertModel.$showAlert
+    viewModel.alertModel.$showAlert
       .sink { value in
         if value == true {
           expectation.fulfill()
@@ -122,7 +122,7 @@ final class StationsNetworkTest: XCTestCase {
     let viewModel = StationsNetworkViewModel(apiClient: MockAPIClient(), locationService: MockLocationServiceClient())
     viewModel.loadNetworkStations()
     
-    let _ = viewModel.alertModel.$showAlert
+    viewModel.alertModel.$showAlert
       .sink { value in
         if value == true {
           expectation.fulfill()

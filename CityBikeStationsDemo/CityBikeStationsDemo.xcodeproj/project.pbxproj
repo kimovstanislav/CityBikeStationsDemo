@@ -17,7 +17,6 @@
 		28D5FCCF29C0915700031775 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D5FCCE29C0915700031775 /* ContentView.swift */; };
 		28D5FCD129C0915A00031775 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28D5FCD029C0915A00031775 /* Assets.xcassets */; };
 		28D5FCD529C0915A00031775 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28D5FCD429C0915A00031775 /* Preview Assets.xcassets */; };
-		28D5FCDF29C0915B00031775 /* CityBikeStationsDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D5FCDE29C0915B00031775 /* CityBikeStationsDemoTests.swift */; };
 		28D5FCE929C0915B00031775 /* CityBikeStationsDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D5FCE829C0915B00031775 /* CityBikeStationsDemoUITests.swift */; };
 		28D5FCEB29C0915B00031775 /* CityBikeStationsDemoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D5FCEA29C0915B00031775 /* CityBikeStationsDemoUITestsLaunchTests.swift */; };
 		28D5FCF929C0AEF200031775 /* DetailedError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D5FCF829C0AEF200031775 /* DetailedError.swift */; };
@@ -77,7 +76,6 @@
 		28D5FCD229C0915A00031775 /* CityBikeStationsDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CityBikeStationsDemo.entitlements; sourceTree = "<group>"; };
 		28D5FCD429C0915A00031775 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		28D5FCDA29C0915B00031775 /* CityBikeStationsDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CityBikeStationsDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		28D5FCDE29C0915B00031775 /* CityBikeStationsDemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityBikeStationsDemoTests.swift; sourceTree = "<group>"; };
 		28D5FCE429C0915B00031775 /* CityBikeStationsDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CityBikeStationsDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		28D5FCE829C0915B00031775 /* CityBikeStationsDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityBikeStationsDemoUITests.swift; sourceTree = "<group>"; };
 		28D5FCEA29C0915B00031775 /* CityBikeStationsDemoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityBikeStationsDemoUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -192,7 +190,6 @@
 			isa = PBXGroup;
 			children = (
 				28490E9B29C3897D003CE72D /* Utility */,
-				28D5FCDE29C0915B00031775 /* CityBikeStationsDemoTests.swift */,
 				28490E9729C383B9003CE72D /* APITest.swift */,
 				28490E9929C3887B003CE72D /* StationsNetworkTest.swift */,
 			);
@@ -512,7 +509,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				28490E9829C383B9003CE72D /* APITest.swift in Sources */,
-				28D5FCDF29C0915B00031775 /* CityBikeStationsDemoTests.swift in Sources */,
 				28490E9A29C3887B003CE72D /* StationsNetworkTest.swift in Sources */,
 				28490EA129C39676003CE72D /* FailingLocationServiceClient.swift in Sources */,
 				28490E9F29C393DC003CE72D /* FailingAPIClient.swift in Sources */,
