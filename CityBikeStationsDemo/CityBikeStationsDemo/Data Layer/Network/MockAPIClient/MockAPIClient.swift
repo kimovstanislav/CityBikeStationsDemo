@@ -19,7 +19,7 @@ actor MockAPIClient: API {
 }
 
 extension MockAPIClient {
-  func getObject<T: Decodable>(fileName: String) throws -> T {
+  func getObject<ResponseType: Decodable>(fileName: String) throws -> ResponseType {
     let jsonString = JsonHelper.readJsonString(named: fileName)
     let data = jsonString.data(using: .utf8)!
     return try decodeApiResponse(data: data)

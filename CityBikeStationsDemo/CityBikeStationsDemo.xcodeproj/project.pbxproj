@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		28490E9629C3613C003CE72D /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28490E9529C3613C003CE72D /* Font.swift */; };
+		28490E9829C383B9003CE72D /* APITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28490E9729C383B9003CE72D /* APITest.swift */; };
+		28490E9A29C3887B003CE72D /* StationsNetworkTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28490E9929C3887B003CE72D /* StationsNetworkTest.swift */; };
+		28490E9D29C389E7003CE72D /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28490E9C29C389E7003CE72D /* Queue.swift */; };
 		28D5FCCD29C0915700031775 /* CityBikeStationsDemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D5FCCC29C0915700031775 /* CityBikeStationsDemoApp.swift */; };
 		28D5FCCF29C0915700031775 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D5FCCE29C0915700031775 /* ContentView.swift */; };
 		28D5FCD129C0915A00031775 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28D5FCD029C0915A00031775 /* Assets.xcassets */; };
@@ -60,6 +63,9 @@
 
 /* Begin PBXFileReference section */
 		28490E9529C3613C003CE72D /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
+		28490E9729C383B9003CE72D /* APITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APITest.swift; sourceTree = "<group>"; };
+		28490E9929C3887B003CE72D /* StationsNetworkTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationsNetworkTest.swift; sourceTree = "<group>"; };
+		28490E9C29C389E7003CE72D /* Queue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
 		28D5FCC929C0915700031775 /* CityBikeStationsDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CityBikeStationsDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28D5FCCC29C0915700031775 /* CityBikeStationsDemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityBikeStationsDemoApp.swift; sourceTree = "<group>"; };
 		28D5FCCE29C0915700031775 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -122,6 +128,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		28490E9B29C3897D003CE72D /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				28490E9C29C389E7003CE72D /* Queue.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
 		28D5FCC029C0915700031775 = {
 			isa = PBXGroup;
 			children = (
@@ -171,7 +185,10 @@
 		28D5FCDD29C0915B00031775 /* CityBikeStationsDemoTests */ = {
 			isa = PBXGroup;
 			children = (
+				28490E9B29C3897D003CE72D /* Utility */,
 				28D5FCDE29C0915B00031775 /* CityBikeStationsDemoTests.swift */,
+				28490E9729C383B9003CE72D /* APITest.swift */,
+				28490E9929C3887B003CE72D /* StationsNetworkTest.swift */,
 			);
 			path = CityBikeStationsDemoTests;
 			sourceTree = "<group>";
@@ -488,7 +505,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28490E9829C383B9003CE72D /* APITest.swift in Sources */,
 				28D5FCDF29C0915B00031775 /* CityBikeStationsDemoTests.swift in Sources */,
+				28490E9A29C3887B003CE72D /* StationsNetworkTest.swift in Sources */,
+				28490E9D29C389E7003CE72D /* Queue.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
