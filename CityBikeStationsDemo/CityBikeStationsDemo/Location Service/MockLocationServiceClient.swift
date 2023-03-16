@@ -8,7 +8,7 @@
 import Foundation
 import CoreLocation
 
-class MockLocationServiceClient: NSObject, LocationService {
+class MockLocationServiceClient: LocationService {
   func getLocationOnce() async throws -> CLLocation {
     return CLLocation(latitude: 48.210033, longitude: 16.363449)
   }

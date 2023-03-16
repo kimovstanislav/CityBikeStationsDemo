@@ -8,6 +8,6 @@
 import Foundation
 import CoreLocation
 
-protocol LocationService: AnyObject {
+protocol LocationService {
   func getLocationOnce() async throws -> CLLocation
 }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol API: AnyObject {
+protocol API {
   func loadViennaNetwork() async throws -> Network
 }
 
