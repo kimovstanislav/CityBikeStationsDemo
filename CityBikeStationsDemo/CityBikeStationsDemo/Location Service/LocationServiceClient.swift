@@ -20,6 +20,7 @@ actor LocationServiceClient: NSObject, LocationService {
   }
   
   func getLocationOnce() async throws -> CLLocation {
+    guard completionHandler == nil else { throw DetailedError.unknown }
     return try await withCheckedThrowingContinuation { continuation in
     getLocationOnce { result in
         switch result {
@@ -47,11 +48,15 @@ actor LocationServiceClient: NSObject, LocationService {
     }
     return false
   }
+  
+  private func clearCompletion() {
+    completionHandler = nil
+  }
 }
 
 // MARK: - CLLocationManagerDelegate
 extension LocationServiceClient: CLLocationManagerDelegate {
-  nonisolated func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+  nonisolated func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
     Task {
       await requestLocationOnceIfAllowed()
     }
@@ -64,6 +69,7 @@ extension LocationServiceClient: CLLocationManagerDelegate {
     if let location = locations.first {
       Task {
         await completionHandler?(.success(location))
+        await clearCompletion()
       }
     }
   }
@@ -74,6 +80,7 @@ extension LocationServiceClient: CLLocationManagerDelegate {
   ) {
     Task {
       await completionHandler?(.failure(error))
+      await clearCompletion()
     }
   }
 }

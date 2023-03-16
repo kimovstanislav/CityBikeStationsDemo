@@ -9,7 +9,7 @@ import Foundation
 
 /// Throws DetailedError
 actor APIClient: API {
-  let session = URLSession.shared
+  private let session = URLSession.shared
 
   enum URLs {
     static let host = "api.citybik.es"
