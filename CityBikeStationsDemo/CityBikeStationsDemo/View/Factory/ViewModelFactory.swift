@@ -10,9 +10,10 @@ import Foundation
 class ViewModelFactory {
   static let shared = ViewModelFactory()
   
-  private let apiClient: API = APIClient()
+  private let apiClient = APIClient()
+  private let locationService = LocationServiceClient()
   
   func makeStationsNetworkViewModel() -> StationsNetworkViewModel {
-    return StationsNetworkViewModel(apiClient: apiClient)
+    return StationsNetworkViewModel(apiClient: apiClient, locationService: locationService)
   }
 }

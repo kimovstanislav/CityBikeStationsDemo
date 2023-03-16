@@ -9,6 +9,6 @@ import Foundation
 
 extension ViewModelFactory {
     func makeMockStationsNetworkViewModel() -> StationsNetworkViewModel {
-        return StationsNetworkViewModel(apiClient: MockAPIClient())
+        return StationsNetworkViewModel(apiClient: MockAPIClient(), locationService: MockLocationServiceClient())
     }
 }

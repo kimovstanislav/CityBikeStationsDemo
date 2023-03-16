@@ -20,9 +20,9 @@ struct StationsNetworkView: View {
       case .loading:
         loaderView()
         
-      case .showNetwork(let network):
-        if network.stations.count > 0 {
-          showStationsList(stations: network.stations)
+      case .showStations(let stations):
+        if stations.count > 0 {
+          showStationsList(stations: stations)
         } else {
           emptyListView()
         }
@@ -44,7 +44,7 @@ struct StationsNetworkView: View {
   
   // MARK: - Placeholder
   private func placeholderView() -> some View {
-    Text("Hello")
+    Text("Hallo")
   }
   
   // MARK: - Loading
@@ -58,6 +58,7 @@ struct StationsNetworkView: View {
   }
   
   // MARK: - Stations list
+  // TODO: proper cell layout with 3 values
   private func showStationsList(stations: [Station]) -> some View {
     List(stations.indices, id: \.self) { index in
       Text(stations[index].name)

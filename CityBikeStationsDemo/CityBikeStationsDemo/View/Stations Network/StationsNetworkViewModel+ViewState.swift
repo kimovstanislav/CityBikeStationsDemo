@@ -11,7 +11,7 @@ extension StationsNetworkViewModel {
   enum ViewState {
     case idle
     case loading
-    case showNetwork(network: Network)
+    case showStations(stations: [Station])
     case showError(errorMessage: String)
   }
 }

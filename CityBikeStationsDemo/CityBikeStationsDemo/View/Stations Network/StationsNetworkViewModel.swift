@@ -10,16 +10,29 @@ import CoreLocation
 
 class StationsNetworkViewModel: BaseViewModel {
   private let apiClient: API
+  private let locationService: LocationService
   
   @Published @MainActor private(set) var viewState: ViewState = .idle
   
   private var network: Network? = nil
+  private var sortedStations: [Station] = []
   private var location: CLLocation? = nil
   private var error: DetailedError? = nil
   
-  init(apiClient: API) {
-      self.apiClient = apiClient
-      super.init()
+  init(apiClient: API, locationService: LocationService) {
+    self.apiClient = apiClient
+    self.locationService = locationService
+    super.init()
+    start()
+  }
+  
+  private func start() {
+    Task {
+      location = try? await locationService.getLocationOnce()
+      if network != nil {
+        updateViewState()
+      }
+    }
   }
 }
 
@@ -37,11 +50,12 @@ extension StationsNetworkViewModel {
   
   private func updateViewState() {
     Task {
-      if let error = error {
+      if let error {
         await setViewState(.showError(errorMessage: error.message))
       }
-      else if let network = network {
-        await setViewState(.showNetwork(network: network))
+      else if let network {
+        let stations = sortedStations(network.stations)
+        await setViewState(.showStations(stations: stations))
       }
       else {
         await setViewState(.idle)
@@ -90,8 +104,15 @@ extension StationsNetworkViewModel {
 }
 
 // MARK: - Sort stations logic
-//extension StationsNetworkViewModel {
-//  private func sortStations(_ stations: [Station]) -> [Station] {
-//    return stations
-//  }
-//}
+extension StationsNetworkViewModel {
+  private func sortedStations(_ stations: [Station]) -> [Station] {
+    if let location {
+      return stations.sorted {
+        $0.location.distance(from: location) < $1.location.distance(from: location)
+      }
+    }
+    else {
+      return stations.sorted { $0.name < $1.name }
+    }
+  }
+}

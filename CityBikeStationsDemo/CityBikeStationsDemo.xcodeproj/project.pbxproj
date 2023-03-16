@@ -34,6 +34,10 @@
 		28D5FD2A29C1E10300031775 /* ErrorLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D5FD2929C1E10300031775 /* ErrorLogger.swift */; };
 		28D5FD2D29C1FB0D00031775 /* StationsNetworkViewModel+ViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D5FD2C29C1FB0D00031775 /* StationsNetworkViewModel+ViewState.swift */; };
 		28D5FD3129C22D6700031775 /* ViewModelFactory+Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D5FD3029C22D6700031775 /* ViewModelFactory+Mock.swift */; };
+		28D5FD3629C2671E00031775 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D5FD3529C2671E00031775 /* LocationService.swift */; };
+		28D5FD3829C2683000031775 /* LocationServiceClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D5FD3729C2683000031775 /* LocationServiceClient.swift */; };
+		28D5FD3A29C2684000031775 /* MockLocationServiceClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D5FD3929C2684000031775 /* MockLocationServiceClient.swift */; };
+		28D5FD3C29C3268C00031775 /* Station+Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D5FD3B29C3268C00031775 /* Station+Location.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +89,10 @@
 		28D5FD2929C1E10300031775 /* ErrorLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorLogger.swift; sourceTree = "<group>"; };
 		28D5FD2C29C1FB0D00031775 /* StationsNetworkViewModel+ViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StationsNetworkViewModel+ViewState.swift"; sourceTree = "<group>"; };
 		28D5FD3029C22D6700031775 /* ViewModelFactory+Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewModelFactory+Mock.swift"; sourceTree = "<group>"; };
+		28D5FD3529C2671E00031775 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
+		28D5FD3729C2683000031775 /* LocationServiceClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationServiceClient.swift; sourceTree = "<group>"; };
+		28D5FD3929C2684000031775 /* MockLocationServiceClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockLocationServiceClient.swift; sourceTree = "<group>"; };
+		28D5FD3B29C3268C00031775 /* Station+Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Station+Location.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +149,7 @@
 				28D5FCD329C0915A00031775 /* Preview Content */,
 				28D5FD1B29C1DED400031775 /* View */,
 				28D5FCFD29C0B2AF00031775 /* Data Layer */,
+				28D5FD3429C25B9A00031775 /* Location Service */,
 				28D5FCF729C0AED200031775 /* Error Handling */,
 				28D5FCFA29C0AF1A00031775 /* Utility */,
 				28D5FD0E29C0E20800031775 /* Definitions */,
@@ -243,6 +252,7 @@
 			isa = PBXGroup;
 			children = (
 				28D5FD0529C0BA4600031775 /* StationsNetwork.swift */,
+				28D5FD3B29C3268C00031775 /* Station+Location.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -299,6 +309,16 @@
 				28D5FD3029C22D6700031775 /* ViewModelFactory+Mock.swift */,
 			);
 			path = Factory;
+			sourceTree = "<group>";
+		};
+		28D5FD3429C25B9A00031775 /* Location Service */ = {
+			isa = PBXGroup;
+			children = (
+				28D5FD3529C2671E00031775 /* LocationService.swift */,
+				28D5FD3729C2683000031775 /* LocationServiceClient.swift */,
+				28D5FD3929C2684000031775 /* MockLocationServiceClient.swift */,
+			);
+			path = "Location Service";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -438,12 +458,16 @@
 				28D5FCFC29C0AF2800031775 /* Strings.swift in Sources */,
 				28D5FD0B29C0E19D00031775 /* APIClient.swift in Sources */,
 				28D5FD2329C1DF7900031775 /* BaseViewModel.swift in Sources */,
+				28D5FD3629C2671E00031775 /* LocationService.swift in Sources */,
 				28D5FCF929C0AEF200031775 /* DetailedError.swift in Sources */,
 				28D5FD0629C0BA4600031775 /* StationsNetwork.swift in Sources */,
 				28D5FD0D29C0E1CE00031775 /* APIClient+ErrorMapping.swift in Sources */,
 				28D5FD1229C0E6AA00031775 /* UnexpectedCodePath.swift in Sources */,
 				28D5FD1429C0FE9500031775 /* JsonHelper.swift in Sources */,
+				28D5FD3C29C3268C00031775 /* Station+Location.swift in Sources */,
 				28D5FD2529C1DF8800031775 /* AlertViewModel.swift in Sources */,
+				28D5FD3A29C2684000031775 /* MockLocationServiceClient.swift in Sources */,
+				28D5FD3829C2683000031775 /* LocationServiceClient.swift in Sources */,
 				28D5FD2A29C1E10300031775 /* ErrorLogger.swift in Sources */,
 				28D5FD2D29C1FB0D00031775 /* StationsNetworkViewModel+ViewState.swift in Sources */,
 				28D5FD0329C0B2DE00031775 /* API.swift in Sources */,
@@ -608,7 +632,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"CityBikeStationsDemo/Preview Content\"";
 				DEVELOPMENT_TEAM = QNMYS92JJY;
-				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_HARDENED_RUNTIME = NO;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
@@ -629,7 +653,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.skimov.CityBikeStationsDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -646,7 +672,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"CityBikeStationsDemo/Preview Content\"";
 				DEVELOPMENT_TEAM = QNMYS92JJY;
-				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_HARDENED_RUNTIME = NO;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
@@ -667,7 +693,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.skimov.CityBikeStationsDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -689,7 +717,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.skimov.CityBikeStationsDemoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -712,7 +742,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.skimov.CityBikeStationsDemoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
