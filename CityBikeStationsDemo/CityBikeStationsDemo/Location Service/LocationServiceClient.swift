@@ -8,12 +8,16 @@
 import Foundation
 import CoreLocation
 
-// TODO: think about if worth making it an Actor later.
-class LocationServiceClient: NSObject, LocationService {
+actor LocationServiceClient: NSObject, LocationService {
   private var locationManager = CLLocationManager()
   
   typealias LocationClosure = (Result<CLLocation, Error>) -> Void
   private var completionHandler: LocationClosure? = nil
+  
+  override init() {
+    super.init()
+    locationManager.delegate = self
+  }
   
   func getLocationOnce() async throws -> CLLocation {
     return try await withCheckedThrowingContinuation { continuation in
@@ -30,7 +34,6 @@ class LocationServiceClient: NSObject, LocationService {
   
   private func getLocationOnce(completion: @escaping LocationClosure) {
     completionHandler = completion
-    locationManager.delegate = self
     
     if !requestLocationOnceIfAllowed() {
       locationManager.requestWhenInUseAuthorization()
@@ -48,23 +51,29 @@ class LocationServiceClient: NSObject, LocationService {
 
 // MARK: - CLLocationManagerDelegate
 extension LocationServiceClient: CLLocationManagerDelegate {
-  func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-    requestLocationOnceIfAllowed()
+  nonisolated func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+    Task {
+      await requestLocationOnceIfAllowed()
+    }
   }
   
-  func locationManager(
+  nonisolated func locationManager(
     _ manager: CLLocationManager,
     didUpdateLocations locations: [CLLocation]
   ) {
     if let location = locations.first {
-      completionHandler?(.success(location))
+      Task {
+        await completionHandler?(.success(location))
+      }
     }
   }
   
-  func locationManager(
+  nonisolated func locationManager(
     _ manager: CLLocationManager,
     didFailWithError error: Error
   ) {
-    completionHandler?(.failure(error))
+    Task {
+      await completionHandler?(.failure(error))
+    }
   }
 }
