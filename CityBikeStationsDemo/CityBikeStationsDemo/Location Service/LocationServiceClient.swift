@@ -7,7 +7,11 @@
 
 import Foundation
 import CoreLocation
+import Combine
 
+// Currently this class was just quickly done for a single purpose, to be called once and forgotten.
+// To implement it properly, it should be done with a Combine publisher.
+// Here is a good example how to start - https://www.waldo.com/blog/building-a-location-publisher-with-combine-and-core-location
 actor LocationServiceClient: NSObject, LocationService {
   private var locationManager = CLLocationManager()
   

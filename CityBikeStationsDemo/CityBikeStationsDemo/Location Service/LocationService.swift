@@ -8,6 +8,7 @@
 import Foundation
 import CoreLocation
 
+// TODO: change into a Combine publisher
 protocol LocationService {
   func getLocationOnce() async throws -> CLLocation
 }

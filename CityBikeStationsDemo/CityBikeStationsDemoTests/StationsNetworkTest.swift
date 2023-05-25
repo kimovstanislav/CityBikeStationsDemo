@@ -9,6 +9,7 @@ import XCTest
 import Combine
 @testable import CityBikeStationsDemo
 
+// TODO: search for a more proper way to test async code than Task with timeout
 final class StationsNetworkTest: XCTestCase {
   private var bag: Set<AnyCancellable> = []
   
