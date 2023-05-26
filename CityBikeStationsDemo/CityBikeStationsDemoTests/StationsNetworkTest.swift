@@ -9,101 +9,85 @@ import XCTest
 import Combine
 @testable import CityBikeStationsDemo
 
-// TODO: search for a more proper way to test async code than Task with timeout
 final class StationsNetworkTest: XCTestCase {
   private var bag: Set<AnyCancellable> = []
   
   override func setUpWithError() throws {
-    // Put setup code here. This method is called before the invocation of each test method in the class.
   }
   
   override func tearDownWithError() throws {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
   }
   
-  func testLoadStations() throws {
+  func testLoadStations() async throws {
     let expectation = self.expectation(description: "States")
     
-    Task {
-      do {
-        let apiClient = MockAPIClient()
-        let locationService = MockLocationServiceClient()
-        let network = try await apiClient.loadViennaNetwork()
-        let location = try await locationService.getLocationOnce()
-        let toCompareStations = network.stations.sorted {
-          $0.location.distance(from: location) < $1.location.distance(from: location)
+    let apiClient = MockAPIClient()
+    let locationService = MockLocationServiceClient()
+    let viewModel = StationsNetworkViewModel(apiClient: apiClient, locationService: locationService)
+    
+    let network = try await apiClient.loadViennaNetwork()
+    let location = try await locationService.getLocationOnce()
+    let loadedStations = network.stations.sorted {
+      $0.location.distance(from: location) < $1.location.distance(from: location)
+    }
+    var statesQueue = Queue<StationsNetworkViewModel.ViewState>()
+    statesQueue.enqueue(.idle)
+    statesQueue.enqueue(.loading)
+    statesQueue.enqueue(.showStations(stations: loadedStations))
+    
+    viewModel.$viewState
+      .sink { value in
+        let stateToCompare = statesQueue.dequeue()
+        guard stateToCompare == value else {
+          XCTFail("Wrong state")
+          return
         }
-        var statesQueue = Queue<StationsNetworkViewModel.ViewState>()
-        statesQueue.enqueue(.idle)
-        statesQueue.enqueue(.loading)
-        statesQueue.enqueue(.showStations(stations: toCompareStations))
-        
-        let viewModel = StationsNetworkViewModel(apiClient: apiClient, locationService: locationService)
-        viewModel.loadNetworkStations()
-        
-        viewModel.$viewState
-          .sink { value in
-            let stateToCompare = statesQueue.dequeue()
-            guard stateToCompare == value else {
-              XCTFail("Wrong state")
-              return
-            }
-            if statesQueue.isEmpty {
-              expectation.fulfill()
-            }
-          }
-          .store(in: &bag)
+        if statesQueue.isEmpty {
+          expectation.fulfill()
+        }
       }
-      catch let error as DetailedError  {
-        XCTFail(error.message)
-      }
-    }
+      .store(in: &bag)
     
-    waitForExpectations(timeout: 1, handler: nil)
+    viewModel.loadNetworkStations()
+    
+    wait(for: [expectation], timeout: 1)
   }
   
-  func testLoadStationsNoLocation() throws {
+  func testLoadStationsNoLocation() async throws {
     let expectation = self.expectation(description: "States")
     
-    Task {
-      do {
-        let apiClient = MockAPIClient()
-        let network = try await apiClient.loadViennaNetwork()
-        let toCompareStations = network.stations.sorted { $0.name < $1.name }
-        var statesQueue = Queue<StationsNetworkViewModel.ViewState>()
-        statesQueue.enqueue(.idle)
-        statesQueue.enqueue(.loading)
-        statesQueue.enqueue(.showStations(stations: toCompareStations))
-        
-        let viewModel = StationsNetworkViewModel(apiClient: apiClient, locationService: FailingLocationServiceClient())
-        viewModel.loadNetworkStations()
-        
-        viewModel.$viewState
-          .sink { value in
-            let stateToCompare = statesQueue.dequeue()
-            guard stateToCompare == value else {
-              XCTFail("Wrong state")
-              return
-            }
-            if statesQueue.isEmpty {
-              expectation.fulfill()
-            }
-          }
-          .store(in: &bag)
-      }
-      catch let error as DetailedError  {
-        XCTFail(error.message)
-      }
-    }
+    let apiClient = MockAPIClient()
+    let viewModel = StationsNetworkViewModel(apiClient: apiClient, locationService: FailingLocationServiceClient())
     
-    waitForExpectations(timeout: 1, handler: nil)
+    let network = try await apiClient.loadViennaNetwork()
+    let loadedStations = network.stations.sorted { $0.name < $1.name }
+    var statesQueue = Queue<StationsNetworkViewModel.ViewState>()
+    statesQueue.enqueue(.idle)
+    statesQueue.enqueue(.loading)
+    statesQueue.enqueue(.showStations(stations: loadedStations))
+    
+    viewModel.$viewState
+      .sink { value in
+        let stateToCompare = statesQueue.dequeue()
+        guard stateToCompare == value else {
+          XCTFail("Wrong state")
+          return
+        }
+        if statesQueue.isEmpty {
+          expectation.fulfill()
+        }
+      }
+      .store(in: &bag)
+    
+    viewModel.loadNetworkStations()
+    
+    wait(for: [expectation], timeout: 1)
   }
   
   func testLoadStationsFailureAlert() throws {
     let expectation = self.expectation(description: "Alert displayed")
     
     let viewModel = StationsNetworkViewModel(apiClient: FailingAPIClient(), locationService: MockLocationServiceClient())
-    viewModel.loadNetworkStations()
     
     viewModel.alertModel.$showAlert
       .sink { value in
@@ -113,7 +97,9 @@ final class StationsNetworkTest: XCTestCase {
       }
       .store(in: &bag)
     
-    waitForExpectations(timeout: 1, handler: nil)
+    viewModel.loadNetworkStations()
+    
+    wait(for: [expectation], timeout: 1)
   }
   
   func testLoadStationsSuccessNoAlert() throws {
@@ -121,7 +107,6 @@ final class StationsNetworkTest: XCTestCase {
     expectation.isInverted = true
     
     let viewModel = StationsNetworkViewModel(apiClient: MockAPIClient(), locationService: MockLocationServiceClient())
-    viewModel.loadNetworkStations()
     
     viewModel.alertModel.$showAlert
       .sink { value in
@@ -131,7 +116,9 @@ final class StationsNetworkTest: XCTestCase {
       }
       .store(in: &bag)
     
-    waitForExpectations(timeout: 1, handler: nil)
+    viewModel.loadNetworkStations()
+    
+    wait(for: [expectation], timeout: 1)
   }
 }
 
