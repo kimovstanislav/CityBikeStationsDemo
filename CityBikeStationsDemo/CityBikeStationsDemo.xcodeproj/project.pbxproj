@@ -14,6 +14,7 @@
 		28490E9F29C393DC003CE72D /* FailingAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28490E9E29C393DC003CE72D /* FailingAPIClient.swift */; };
 		28490EA129C39676003CE72D /* FailingLocationServiceClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28490EA029C39676003CE72D /* FailingLocationServiceClient.swift */; };
 		289B335F2A2389D7004CE18F /* DetailedError+LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289B335E2A2389D7004CE18F /* DetailedError+LocationService.swift */; };
+		289B33612A23B954004CE18F /* MockValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289B33602A23B954004CE18F /* MockValues.swift */; };
 		28D5FCCD29C0915700031775 /* CityBikeStationsDemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D5FCCC29C0915700031775 /* CityBikeStationsDemoApp.swift */; };
 		28D5FCCF29C0915700031775 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D5FCCE29C0915700031775 /* ContentView.swift */; };
 		28D5FCD129C0915A00031775 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28D5FCD029C0915A00031775 /* Assets.xcassets */; };
@@ -71,6 +72,7 @@
 		28490E9E29C393DC003CE72D /* FailingAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FailingAPIClient.swift; sourceTree = "<group>"; };
 		28490EA029C39676003CE72D /* FailingLocationServiceClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FailingLocationServiceClient.swift; sourceTree = "<group>"; };
 		289B335E2A2389D7004CE18F /* DetailedError+LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DetailedError+LocationService.swift"; sourceTree = "<group>"; };
+		289B33602A23B954004CE18F /* MockValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockValues.swift; sourceTree = "<group>"; };
 		28D5FCC929C0915700031775 /* CityBikeStationsDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CityBikeStationsDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28D5FCCC29C0915700031775 /* CityBikeStationsDemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityBikeStationsDemoApp.swift; sourceTree = "<group>"; };
 		28D5FCCE29C0915700031775 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -225,6 +227,7 @@
 				28D5FD1129C0E6AA00031775 /* UnexpectedCodePath.swift */,
 				28D5FD1329C0FE9500031775 /* JsonHelper.swift */,
 				28D5FD2929C1E10300031775 /* ErrorLogger.swift */,
+				289B33602A23B954004CE18F /* MockValues.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -503,6 +506,7 @@
 				28D5FD3129C22D6700031775 /* ViewModelFactory+Mock.swift in Sources */,
 				28D5FD1F29C1DF5700031775 /* StationsNetworkView.swift in Sources */,
 				28D5FD2829C1DFC000031775 /* ViewModelFactory.swift in Sources */,
+				289B33612A23B954004CE18F /* MockValues.swift in Sources */,
 				28D5FD0829C0BFAE00031775 /* DetailedError+API.swift in Sources */,
 				28D5FD2129C1DF6200031775 /* StationsNetworkViewModel.swift in Sources */,
 			);
@@ -679,7 +683,7 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 13.1;
@@ -721,7 +725,7 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 13.1;

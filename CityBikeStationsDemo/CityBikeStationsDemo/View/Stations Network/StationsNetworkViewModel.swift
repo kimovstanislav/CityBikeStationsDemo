@@ -7,10 +7,13 @@
 
 import Foundation
 import CoreLocation
+import Combine
 
 class StationsNetworkViewModel: BaseViewModel {
   private let apiClient: API
   private let locationService: LocationService
+  
+  private var bag = Set<AnyCancellable>()
   
   @Published @MainActor private(set) var viewState: ViewState = .idle
   
@@ -26,18 +29,9 @@ class StationsNetworkViewModel: BaseViewModel {
     start()
   }
   
-  // Testing
-//  let testLocationService = LocationServiceWrapper()
-  
   private func start() {
-//    testLocationService.updateLocation()
-    
-    Task {
-      location = try? await locationService.getLocationOnce()
-      if network != nil {
-        updateViewState()
-      }
-    }
+    bindLocationService()
+    updateLocation()
   }
 }
 
@@ -66,6 +60,29 @@ extension StationsNetworkViewModel {
         await setViewState(.idle)
       }
     }
+  }
+}
+
+// MARK: - Get user location
+extension StationsNetworkViewModel {
+  private func bindLocationService() {
+    locationService.locationPublisher.sink { [weak self] result in
+      guard let self else { return }
+      switch result {
+      case .success(let location):
+        self.location = location
+      case .failure(let error):
+        self.location = nil
+        self.processError(error)
+      }
+      if self.network != nil {
+        self.updateViewState()
+      }
+    }.store(in: &bag)
+  }
+  
+  private func updateLocation() {
+    locationService.updateLocation()
   }
 }
 

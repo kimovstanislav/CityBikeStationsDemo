@@ -8,5 +8,3 @@ Remarks:
 APIClient strictly should be unowned in a ViewModel, because it's stored outside, in ViewModelFactory. But in this case the injected MockAPIClient won't be retained. Also ViewModelFactory and the APIClient will stay alive for the whole app lifecycle. So it is fine, but may meditate more on it later.
 
 Didn't make the whole ViewModel @MainActor here. Would add some trouble injecting and unit testing it. So tried to be less intrusive, isolating only the exposed properties to the main thread.
-
-LocationServiceClient is done most basically, just to request a single location. Added safeguards not to leak continuations and not to call resume more than once. But if it will be concurrently called, just the 1st call will return value, others will throw an unknown error. There is place for improvement here.

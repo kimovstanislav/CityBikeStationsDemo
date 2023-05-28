@@ -7,10 +7,16 @@
 
 import Foundation
 import CoreLocation
+import Combine
 @testable import CityBikeStationsDemo
 
 class FailingLocationServiceClient: LocationService {
-  func getLocationOnce() async throws -> CLLocation {
-    throw DetailedError.unknown
+  var locationPublisher: AnyPublisher<Result<CLLocation?, DetailedError>, Never> {
+    locationSubject.eraseToAnyPublisher()
+  }
+  private let locationSubject = PassthroughSubject<Result<CLLocation?, DetailedError>, Never>()
+  
+  func updateLocation() {
+    locationSubject.send(.failure(DetailedError.unknown))
   }
 }

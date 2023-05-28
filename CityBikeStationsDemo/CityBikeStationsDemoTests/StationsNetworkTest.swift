@@ -26,7 +26,7 @@ final class StationsNetworkTest: XCTestCase {
     let viewModel = StationsNetworkViewModel(apiClient: apiClient, locationService: locationService)
     
     let network = try await apiClient.loadViennaNetwork()
-    let location = try await locationService.getLocationOnce()
+    let location = MockValues.Location.viennaCenter
     let loadedStations = network.stations.sorted {
       $0.location.distance(from: location) < $1.location.distance(from: location)
     }

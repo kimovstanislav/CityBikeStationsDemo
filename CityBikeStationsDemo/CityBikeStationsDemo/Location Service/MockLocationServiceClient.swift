@@ -7,9 +7,16 @@
 
 import Foundation
 import CoreLocation
+import Combine
 
 class MockLocationServiceClient: LocationService {
-  func getLocationOnce() async throws -> CLLocation {
-    return CLLocation(latitude: 48.210033, longitude: 16.363449)
+  var locationPublisher: AnyPublisher<Result<CLLocation?, DetailedError>, Never> {
+    locationSubject.eraseToAnyPublisher()
+  }
+  private let locationSubject = PassthroughSubject<Result<CLLocation?, DetailedError>, Never>()
+  
+  func updateLocation() {
+    locationSubject.send(.success(MockValues.Location.viennaCenter))
   }
 }
+
