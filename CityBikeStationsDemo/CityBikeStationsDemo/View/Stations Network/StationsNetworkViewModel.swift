@@ -92,13 +92,12 @@ extension StationsNetworkViewModel {
     clearError()
     startLoading()
     Task { [weak self] in
-      guard let self else { return }
       do {
         let response = try await apiClient.loadViennaNetwork()
-        self.handleGetNetworkSuccess(response)
+        self?.handleGetNetworkSuccess(response)
       }
       catch let error as DetailedError {
-        self.handleGetNetworkFailure(error)
+        self?.handleGetNetworkFailure(error)
       }
     }
   }
