@@ -11,17 +11,21 @@ import Foundation
 
 enum Strings {
   enum Error {
+    static let title = "Error"
+    static let unknownMessage = "Unknown error. Please try again."
+    static let formattedErrorCode = "\n(Error code: %d)"
+    
     enum API {
-      static let title = "Error"
-      static let unknownMessage = "Unknown error. Please try again."
-      static let formattedErrorCode = "\n(Error code: %d)"
-      
       static let noInternetConnectionTitle = "No internet connection"
       static let noInternetConnectionMessage = "No internet connection description"
       static let internalServerErrorTitle = "Server error"
       static let internalServerErrorMessage = "Server error description"
       static let decodingApiResponseFailedMessage = "Api response object decoding failed"
       static let loadingStationsFromServerErrorMessage = "Failed to load bike stations from server"
+    }
+    
+    enum LocationService {
+      static let gettingLocationError = "Failed to get user location"
     }
   }
     

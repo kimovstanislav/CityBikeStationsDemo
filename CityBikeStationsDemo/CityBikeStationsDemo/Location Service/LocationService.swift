@@ -7,8 +7,14 @@
 
 import Foundation
 import CoreLocation
+import Combine
 
-// TODO: change into a Combine publisher
+// TODO: remove the use of this protocol and replace with a Combine one
 protocol LocationService {
   func getLocationOnce() async throws -> CLLocation
+}
+
+protocol CombineLocationService {
+  var locationPublisher: AnyPublisher<Result<CLLocation?, Error>, Never> { get }
+  func updateLocation()
 }

@@ -26,7 +26,12 @@ class StationsNetworkViewModel: BaseViewModel {
     start()
   }
   
+  // Testing
+//  let testLocationService = LocationServiceWrapper()
+  
   private func start() {
+//    testLocationService.updateLocation()
+    
     Task {
       location = try? await locationService.getLocationOnce()
       if network != nil {

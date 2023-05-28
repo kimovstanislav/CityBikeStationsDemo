@@ -29,7 +29,7 @@ extension APIClient {
           message: Strings.Error.API.internalServerErrorMessage)
       }
       return DetailedError(
-        apiError: error, code: error.code, title: Strings.Error.API.title,
+        apiError: error, code: error.code, title: Strings.Error.title,
         message: error.localizedDescription)
     }
   }

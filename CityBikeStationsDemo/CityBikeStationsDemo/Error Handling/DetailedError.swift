@@ -23,7 +23,7 @@ struct DetailedError: Error {
   init(
     source: DetailedError.Source = .unknown,
     code: Int,
-    title: String = Strings.Error.API.title,
+    title: String = Strings.Error.title,
     message: String,
     isSilent: Bool = false,
     cause: Error? = nil
@@ -31,7 +31,7 @@ struct DetailedError: Error {
     self.source = source
     self.code = code
     self.title = title
-    self.message = message + String(format: Strings.Error.API.formattedErrorCode, code)
+    self.message = message + String(format: Strings.Error.formattedErrorCode, code)
     self.isSilent = isSilent
     self.cause = cause
   }
@@ -39,15 +39,15 @@ struct DetailedError: Error {
   static let unknown = DetailedError(
     source: .unknown,
     code: ErrorCode.unknown.rawValue,
-    title: Strings.Error.API.title,
-    message: Strings.Error.API.unknownMessage
+    title: Strings.Error.title,
+    message: Strings.Error.unknownMessage
   )
 }
 
 // MARK: - Source
 extension DetailedError {
   enum Source: String {
-    case api, unknown
+    case api, locationService, unknown
   }
 }
 
@@ -57,6 +57,7 @@ extension DetailedError {
     case unknown = -1
     case unexpectedCodePath = 0
     case errorDecodingApiResponse = 601
+    case errorGettingUserLocation = 701
   }
 }
 

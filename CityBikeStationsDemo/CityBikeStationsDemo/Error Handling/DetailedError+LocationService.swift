@@ -1,8 +1,8 @@
 //
-//  DetailedError+API.swift
+//  DetailedError+LocationService.swift
 //  CityBikeStationsDemo
 //
-//  Created by Stanislav Kimov on 14.03.23.
+//  Created by Stanislav Kimov on 28.05.23.
 //
 
 import Foundation
@@ -10,28 +10,28 @@ import Foundation
 // MARK: - API error init
 extension DetailedError {
   init(
-    apiError: Error?,
+    locationServiceError: Error?,
     code: Int,
     title: String,
     message: String
   ) {
     self.init(
-      source: .api,
+      source: .locationService,
       code: code,
       message: message,
       isSilent: false,
-      cause: apiError
+      cause: locationServiceError
     )
   }
 }
 
 // MARK: - Make decoding error
 extension DetailedError.Factory {
-  static func makeDecodingError(cause: Error? = nil) -> DetailedError {
+  static func makeLocationServiceError(cause: Error? = nil) -> DetailedError {
     DetailedError(
       apiError: cause,
-      code: DetailedError.ErrorCode.errorDecodingApiResponse.rawValue,
+      code: DetailedError.ErrorCode.errorGettingUserLocation.rawValue,
       title: Strings.Error.title,
-      message: Strings.Error.API.decodingApiResponseFailedMessage)
+      message: Strings.Error.LocationService.gettingLocationError)
   }
 }
