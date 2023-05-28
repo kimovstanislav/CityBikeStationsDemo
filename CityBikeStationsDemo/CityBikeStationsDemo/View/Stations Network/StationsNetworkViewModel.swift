@@ -88,20 +88,20 @@ extension StationsNetworkViewModel {
 
 // MARK: - Load from server
 extension StationsNetworkViewModel {
-    func loadNetworkStations() {
-      clearError()
-      startLoading()
-      Task { [weak self] in
-        guard let self else { return }
-          do {
-              let response = try await apiClient.loadViennaNetwork()
-              self.handleGetNetworkSuccess(response)
-          }
-          catch let error as DetailedError {
-              self.handleGetNetworkFailure(error)
-          }
+  func loadNetworkStations() {
+    clearError()
+    startLoading()
+    Task { [weak self] in
+      guard let self else { return }
+      do {
+        let response = try await apiClient.loadViennaNetwork()
+        self.handleGetNetworkSuccess(response)
+      }
+      catch let error as DetailedError {
+        self.handleGetNetworkFailure(error)
       }
     }
+  }
   
   private func clearError() {
     error = nil
@@ -110,17 +110,17 @@ extension StationsNetworkViewModel {
 
 // MARK: - Handle API response
 extension StationsNetworkViewModel {
-    private func handleGetNetworkSuccess(_ result: Network) {
-      network = result
-      updateViewState()
-    }
-    
-    private func handleGetNetworkFailure(_ apiError: DetailedError) {
-      network = nil
-      error = apiError
-      updateViewState()
-      processError(apiError)
-    }
+  private func handleGetNetworkSuccess(_ result: Network) {
+    network = result
+    updateViewState()
+  }
+  
+  private func handleGetNetworkFailure(_ apiError: DetailedError) {
+    network = nil
+    error = apiError
+    updateViewState()
+    processError(apiError)
+  }
 }
 
 // MARK: - Sort stations logic
