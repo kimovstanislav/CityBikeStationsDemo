@@ -40,7 +40,7 @@
 		28D5FD2829C1DFC000031775 /* ViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D5FD2729C1DFC000031775 /* ViewModelFactory.swift */; };
 		28D5FD2A29C1E10300031775 /* ErrorLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D5FD2929C1E10300031775 /* ErrorLogger.swift */; };
 		28D5FD2D29C1FB0D00031775 /* StationsNetworkViewModel+ViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D5FD2C29C1FB0D00031775 /* StationsNetworkViewModel+ViewState.swift */; };
-		28D5FD3129C22D6700031775 /* ViewModelFactory+Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D5FD3029C22D6700031775 /* ViewModelFactory+Mock.swift */; };
+		28D5FD3129C22D6700031775 /* MockViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D5FD3029C22D6700031775 /* MockViewModelFactory.swift */; };
 		28D5FD3629C2671E00031775 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D5FD3529C2671E00031775 /* LocationService.swift */; };
 		28D5FD3829C2683000031775 /* LocationServiceClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D5FD3729C2683000031775 /* LocationServiceClient.swift */; };
 		28D5FD3A29C2684000031775 /* MockLocationServiceClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D5FD3929C2684000031775 /* MockLocationServiceClient.swift */; };
@@ -102,7 +102,7 @@
 		28D5FD2729C1DFC000031775 /* ViewModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelFactory.swift; sourceTree = "<group>"; };
 		28D5FD2929C1E10300031775 /* ErrorLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorLogger.swift; sourceTree = "<group>"; };
 		28D5FD2C29C1FB0D00031775 /* StationsNetworkViewModel+ViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StationsNetworkViewModel+ViewState.swift"; sourceTree = "<group>"; };
-		28D5FD3029C22D6700031775 /* ViewModelFactory+Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewModelFactory+Mock.swift"; sourceTree = "<group>"; };
+		28D5FD3029C22D6700031775 /* MockViewModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockViewModelFactory.swift; sourceTree = "<group>"; };
 		28D5FD3529C2671E00031775 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		28D5FD3729C2683000031775 /* LocationServiceClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationServiceClient.swift; sourceTree = "<group>"; };
 		28D5FD3929C2684000031775 /* MockLocationServiceClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockLocationServiceClient.swift; sourceTree = "<group>"; };
@@ -335,7 +335,7 @@
 			isa = PBXGroup;
 			children = (
 				28D5FD2729C1DFC000031775 /* ViewModelFactory.swift */,
-				28D5FD3029C22D6700031775 /* ViewModelFactory+Mock.swift */,
+				28D5FD3029C22D6700031775 /* MockViewModelFactory.swift */,
 			);
 			path = Factory;
 			sourceTree = "<group>";
@@ -503,7 +503,7 @@
 				28D5FD0329C0B2DE00031775 /* API.swift in Sources */,
 				28D5FD1629C0FEE600031775 /* MockAPIClient.swift in Sources */,
 				28490E9629C3613C003CE72D /* Font.swift in Sources */,
-				28D5FD3129C22D6700031775 /* ViewModelFactory+Mock.swift in Sources */,
+				28D5FD3129C22D6700031775 /* MockViewModelFactory.swift in Sources */,
 				28D5FD1F29C1DF5700031775 /* StationsNetworkView.swift in Sources */,
 				28D5FD2829C1DFC000031775 /* ViewModelFactory.swift in Sources */,
 				289B33612A23B954004CE18F /* MockValues.swift in Sources */,

@@ -12,6 +12,11 @@ import Combine
 final class StationsNetworkTest: XCTestCase {
   private var bag: Set<AnyCancellable> = []
   
+  let mockApiClient = MockAPIClient()
+  let mockLocationService = MockLocationServiceClient()
+  let failingApiClient = FailingAPIClient()
+  let failingLocationService = FailingLocationServiceClient()
+  
   override func setUpWithError() throws {
   }
   
@@ -21,11 +26,9 @@ final class StationsNetworkTest: XCTestCase {
   func testLoadStations() async throws {
     let expectation = self.expectation(description: "States")
     
-    let apiClient = MockAPIClient()
-    let locationService = MockLocationServiceClient()
-    let viewModel = StationsNetworkViewModel(apiClient: apiClient, locationService: locationService)
+    let viewModel = StationsNetworkViewModel(apiClient: mockApiClient, locationService: mockLocationService)
     
-    let network = try await apiClient.loadViennaNetwork()
+    let network = try await mockApiClient.loadViennaNetwork()
     let location = MockValues.Location.viennaCenter
     let loadedStations = network.stations.sorted {
       $0.location.distance(from: location) < $1.location.distance(from: location)
@@ -56,10 +59,9 @@ final class StationsNetworkTest: XCTestCase {
   func testLoadStationsNoLocation() async throws {
     let expectation = self.expectation(description: "States")
     
-    let apiClient = MockAPIClient()
-    let viewModel = StationsNetworkViewModel(apiClient: apiClient, locationService: FailingLocationServiceClient())
+    let viewModel = StationsNetworkViewModel(apiClient: mockApiClient, locationService: failingLocationService)
     
-    let network = try await apiClient.loadViennaNetwork()
+    let network = try await mockApiClient.loadViennaNetwork()
     let loadedStations = network.stations.sorted { $0.name < $1.name }
     var statesQueue = Queue<StationsNetworkViewModel.ViewState>()
     statesQueue.enqueue(.idle)
@@ -87,7 +89,7 @@ final class StationsNetworkTest: XCTestCase {
   func testLoadStationsFailureAlert() throws {
     let expectation = self.expectation(description: "Alert displayed")
     
-    let viewModel = StationsNetworkViewModel(apiClient: FailingAPIClient(), locationService: MockLocationServiceClient())
+    let viewModel = StationsNetworkViewModel(apiClient: failingApiClient, locationService: mockLocationService)
     
     viewModel.alertModel.$showAlert
       .sink { value in
@@ -106,7 +108,7 @@ final class StationsNetworkTest: XCTestCase {
     let expectation = self.expectation(description: "Alert displayed")
     expectation.isInverted = true
     
-    let viewModel = StationsNetworkViewModel(apiClient: MockAPIClient(), locationService: MockLocationServiceClient())
+    let viewModel = StationsNetworkViewModel(apiClient: mockApiClient, locationService: mockLocationService)
     
     viewModel.alertModel.$showAlert
       .sink { value in

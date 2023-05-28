@@ -9,7 +9,7 @@ import Foundation
 import CoreLocation
 import Combine
 
-protocol LocationService {
+protocol LocationService: AnyObject {
   var locationPublisher: AnyPublisher<Result<CLLocation?, DetailedError>, Never> { get }
   func updateLocation()
 }

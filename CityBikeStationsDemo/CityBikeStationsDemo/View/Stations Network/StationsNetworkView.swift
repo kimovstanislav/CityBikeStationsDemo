@@ -99,7 +99,7 @@ struct StationsNetworkView: View {
 
 struct StationsNetworkView_Previews: PreviewProvider {
     static var previews: some View {
-      StationsNetworkView(viewModel: ViewModelFactory.shared.makeMockStationsNetworkViewModel())
+      StationsNetworkView(viewModel: MockViewModelFactory.shared.makeStationsNetworkViewModel())
     }
 }
 

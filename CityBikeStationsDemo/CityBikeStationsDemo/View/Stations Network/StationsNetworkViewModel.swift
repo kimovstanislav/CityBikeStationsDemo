@@ -10,8 +10,8 @@ import CoreLocation
 import Combine
 
 class StationsNetworkViewModel: BaseViewModel {
-  private let apiClient: API
-  private let locationService: LocationService
+  private unowned let apiClient: API
+  private unowned let locationService: LocationService
   
   private var bag = Set<AnyCancellable>()
   
